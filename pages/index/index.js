@@ -6,7 +6,10 @@ const API_ROUTE = 'wp/v2/posts'
 Page({
   data: {
     entities: [],
-    embed: true
+    embed: true,
+    total: 0,
+    totalPages: 0,
+    currentPage: 1
   },
   onLoad () {
     wx.request({
@@ -15,7 +18,9 @@ Page({
         console.log(response)
         const entities = response.data
         this.setData({
-          entities
+          entities,
+          total: response.header['x-wp-total'],
+          totalPages: response.header['x-wp-totalpages']
         })
       }
     })
