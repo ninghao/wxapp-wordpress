@@ -28,9 +28,9 @@ Page({
     })
   },
   onReachBottom () {
-    let { currentPage, totalPages } = this.data
+    let { currentPage, totalPages, isLoading } = this.data
 
-    if (currentPage >= totalPages) {
+    if (currentPage >= totalPages || isLoading) {
       return
     }
 
