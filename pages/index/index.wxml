@@ -1,5 +1,10 @@
-<navigator class="media-box" wx:for="{{ entities }}" wx:key="{{ item.id }}">
-  <view class="media-box__bd">
+<navigator class="media-box media-box_appmsg" wx:for="{{ entities }}" wx:key="{{ item.id }}">
+  <view class="media-box__hd media-box__hd_in-appmsg"
+    wx:if="{{ item.featured_media }}">
+    <image class="media-box__thumb"
+      src="{{ item._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url }}" />
+  </view>
+  <view class="media-box__bd media-box__bd_in-appmsg">
     <view class="media-box__title">
       {{ item.title.rendered }}
     </view>
