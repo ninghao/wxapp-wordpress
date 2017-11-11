@@ -4,7 +4,7 @@
       {{ item.title.rendered }}
     </view>
     <view class="media-box__desc">
-      {{ item.excerpt.rendered }}
+      {{ item.excerpt.plaintext }}
     </view>
   </view>
 </navigator>
