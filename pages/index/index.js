@@ -28,6 +28,22 @@ Page({
       }
     })
   },
+  onPullDownRefresh () {
+    wx.request({
+      url: `${ API_BASE }/${ API_ROUTE }?_embed=${ this.data.embed }`,
+      success: (response) => {
+        console.log(response)
+        const entities = response.data
+        this.setData({
+          entities,
+          isLoading: false,
+          total: response.header['x-wp-total'],
+          totalPages: response.header['x-wp-totalpages']
+        })
+        wx.stopPullDownRefresh()
+      }
+    })
+  },
   onReachBottom () {
     let { currentPage, totalPages, isLoading } = this.data
 
