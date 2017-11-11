@@ -10,7 +10,8 @@ Page({
     total: 0,
     totalPages: 0,
     currentPage: 1,
-    isLoading: true
+    isLoading: true,
+    isEarth: false
   },
   onLoad () {
     wx.request({
@@ -50,7 +51,8 @@ Page({
           currentPage,
           isLoading: false,
           total: response.header['x-wp-total'],
-          totalPages: response.header['x-wp-totalpages']
+          totalPages: response.header['x-wp-totalpages'],
+          isEarth: currentPage >= totalPages
         })
       }
     })

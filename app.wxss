@@ -45,3 +45,14 @@ page {
     transform: scale(1.0);
   }
 }
+
+.footer__img {
+  height: 120px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.footer__img image {
+  width: 100%;
+}
