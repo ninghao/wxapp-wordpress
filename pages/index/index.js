@@ -5,11 +5,12 @@ const API_ROUTE = 'wp/v2/posts'
 
 Page({
   data: {
-    entities: []
+    entities: [],
+    embed: true
   },
   onLoad () {
     wx.request({
-      url: `${ API_BASE }/${ API_ROUTE }`,
+      url: `${ API_BASE }/${ API_ROUTE }?_embed=${ this.data.embed }`,
       success: (response) => {
         console.log(response)
         const entities = response.data
