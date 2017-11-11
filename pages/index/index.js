@@ -9,7 +9,8 @@ Page({
     embed: true,
     total: 0,
     totalPages: 0,
-    currentPage: 1
+    currentPage: 1,
+    isLoading: true
   },
   onLoad () {
     wx.request({
@@ -19,6 +20,7 @@ Page({
         const entities = response.data
         this.setData({
           entities,
+          isLoading: false,
           total: response.header['x-wp-total'],
           totalPages: response.header['x-wp-totalpages']
         })
@@ -32,6 +34,10 @@ Page({
       return
     }
 
+    this.setData({
+      isLoading: true
+    })
+
     currentPage = currentPage + 1
 
     wx.request({
@@ -42,6 +48,7 @@ Page({
         this.setData({
           entities,
           currentPage,
+          isLoading: false,
           total: response.header['x-wp-total'],
           totalPages: response.header['x-wp-totalpages']
         })

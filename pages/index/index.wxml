@@ -1,3 +1,4 @@
+<import src="/templates/spinner.wxml" />
 <navigator class="media-box media-box_appmsg" wx:for="{{ entities }}" wx:key="{{ item.id }}">
   <view class="media-box__hd media-box__hd_in-appmsg"
     wx:if="{{ item.featured_media }}">
@@ -13,3 +14,4 @@
     </view>
   </view>
 </navigator>
+<template is="spinner" data="{{ isLoading }}" />
