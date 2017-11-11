@@ -24,5 +24,28 @@ Page({
         })
       }
     })
+  },
+  onReachBottom () {
+    let { currentPage, totalPages } = this.data
+
+    if (currentPage >= totalPages) {
+      return
+    }
+
+    currentPage = currentPage + 1
+
+    wx.request({
+      url: `${ API_BASE }/${ API_ROUTE }?_embed=${ this.data.embed }&page=${ currentPage }`,
+      success: (response) => {
+        console.log(response)
+        const entities = [...this.data.entities, ...response.data]
+        this.setData({
+          entities,
+          currentPage,
+          total: response.header['x-wp-total'],
+          totalPages: response.header['x-wp-totalpages']
+        })
+      }
+    })
   }
 })
