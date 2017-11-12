@@ -276,7 +276,7 @@
 
 /**内置元素**/
 image,video {
-    width:100%; margin:0 auto 20rpx auto;
+    /*width:100%; margin:0 auto 20rpx auto;*/
 }
 
 image {
