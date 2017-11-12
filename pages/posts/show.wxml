@@ -1,0 +1,16 @@
+<view class="featured-media" wx:if="{{ featuredMedia }}">
+  <image mode="aspectFill" src="{{ featuredMedia }}" />
+</view>
+
+<view class="article">
+  <view class="article__h1">{{ title }}</view>
+  <view class="article__section">
+    <view class="article__p">
+      {{ content }}
+    </view>
+    <view class="article__meta">
+      <image class="article__avatar" src="{{ author.avatar_urls['48'] }}" />
+      <view>{{ author.name }}</view>
+    </view>
+  </view>
+</view>

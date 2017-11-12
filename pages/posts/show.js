@@ -9,7 +9,8 @@ Page({
     author: {}
   },
   onLoad (options) {
-    const id = options.id
+    // const id = options.id
+    const id = 31
 
     wx.request({
       url: `${ API_BASE }/${ API_ROUTE }/${ id }?_embed=true`,
@@ -23,6 +24,7 @@ Page({
 
         this.setData({
           ...entity,
+          title,
           content,
           featuredMedia,
           author

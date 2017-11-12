@@ -56,3 +56,21 @@ page {
 .footer__img image {
   width: 100%;
 }
+
+.featured-media image {
+  width: 100%;
+  height: 220px;
+}
+
+.article__meta {
+  display: flex;
+  justify-content: space-between;
+  color: #999;
+  margin-bottom: 0.8em;
+}
+
+.article__avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
