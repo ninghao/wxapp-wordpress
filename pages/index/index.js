@@ -23,7 +23,9 @@ Page({
           entities,
           isLoading: false,
           total: response.header['x-wp-total'],
-          totalPages: response.header['x-wp-totalpages']
+          totalPages: response.header['x-wp-totalpages'],
+          currentPage: 1,
+          isEarth: false
         })
       }
     })
@@ -38,7 +40,9 @@ Page({
           entities,
           isLoading: false,
           total: response.header['x-wp-total'],
-          totalPages: response.header['x-wp-totalpages']
+          totalPages: response.header['x-wp-totalpages'],
+          currentPage: 1,
+          isEarth: false          
         })
         wx.stopPullDownRefresh()
       }
