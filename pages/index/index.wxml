@@ -1,6 +1,6 @@
 <import src="/templates/spinner.wxml" />
 <import src="/templates/footer.wxml" />
-<navigator class="media-box media-box_appmsg" wx:for="{{ entities }}" wx:key="{{ item.id }}">
+<navigator url="/pages/posts/show?id={{ item.id }}" class="media-box media-box_appmsg" wx:for="{{ entities }}" wx:key="{{ item.id }}">
   <view class="media-box__hd media-box__hd_in-appmsg"
     wx:if="{{ item.featured_media }}">
     <image class="media-box__thumb"
