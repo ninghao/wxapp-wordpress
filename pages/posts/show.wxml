@@ -1,4 +1,7 @@
 <import src="/towxml/entry.wxml" />
+<import src="/templates/spinner.wxml" />
+
+<template is="spinner" data="{{ isLoading }}" />
 
 <view class="featured-media" wx:if="{{ featuredMedia }}">
   <image mode="aspectFill" src="{{ featuredMedia }}" />

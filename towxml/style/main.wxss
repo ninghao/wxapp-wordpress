@@ -280,7 +280,7 @@ image,video {
 }
 
 image {
-	height:auto;
+	/*height:auto;*/
 }
 video {
 	height:220px;

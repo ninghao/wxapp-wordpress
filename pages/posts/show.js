@@ -9,11 +9,12 @@ Page({
     title: '',
     content: {},
     featured_media: '',
-    author: {}
+    author: {},
+    isLoading: true
   },
   onLoad (options) {
-    // const id = options.id
-    const id = 31
+    const id = options.id
+    // const id = 31
 
     wx.request({
       url: `${ API_BASE }/${ API_ROUTE }/${ id }?_embed=true`,
@@ -31,7 +32,8 @@ Page({
           title,
           content,
           featuredMedia,
-          author
+          author,
+          isLoading: false
         })
 
         wx.setNavigationBarTitle({
