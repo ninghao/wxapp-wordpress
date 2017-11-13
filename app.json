@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/posts/show",
-    "pages/demo/demo"
+    "pages/demo/demo",
+    "pages/users/show",
+    "pages/users/login"
   ],
   "window": {
     "navigationBarTitleText": "ninghao.net",
@@ -24,10 +26,10 @@
         "selectedIconPath": "assets/icons/home-active.png"
       },
       {
-        "text": "演示",
-        "pagePath": "pages/demo/demo",
-        "iconPath": "assets/icons/event.png",
-        "selectedIconPath": "assets/icons/event-active.png"
+        "text": "我",
+        "pagePath": "pages/users/show",
+        "iconPath": "assets/icons/face.png",
+        "selectedIconPath": "assets/icons/face-active.png"
       }
     ]
   },
