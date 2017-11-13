@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/users/login",
     "pages/users/show",
     "pages/index/index",
     "pages/posts/show",
-    "pages/demo/demo",
-    "pages/users/login"
+    "pages/demo/demo"
   ],
   "window": {
     "navigationBarTitleText": "ninghao.net",

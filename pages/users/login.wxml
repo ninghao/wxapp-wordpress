@@ -1,0 +1,23 @@
+<view class="cells__title">用户名</view>
+<view class="cells cells_after-title">
+  <view class="cell cell_input">
+    <view class="cell__bd">
+      <input
+        class="input" focus
+        placeholder="输入用户名" />
+    </view>
+  </view>
+</view>
+<view class="cells__title">密码</view>
+<view class="cells cells_after-title">
+  <view class="cell cell_input">
+    <view class="cell__bd">
+      <input
+        class="input" password
+        placeholder="输入密码" />
+    </view>
+  </view>
+</view>
+<view class="btn-area">
+  <button class="btn" type="primary">登录</button>
+</view>
