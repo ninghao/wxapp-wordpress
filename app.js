@@ -19,6 +19,10 @@ App({
     wx.setStorageSync('jwt', _token)
     this.globalData.jwt = token
   },
+  removeJWT () {
+    wx.removeStorageSync('jwt')
+    this.globalData.jwt = {}
+  },
   globalData: {
     jwt: {}
   }

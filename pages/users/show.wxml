@@ -9,10 +9,10 @@
   </view>
   <view class="profile__action">
     <view class="btn-area" wx:if="{{ user_email }}">
-      <button class="btn" type="primary">退出</button>
+      <button class="btn" type="primary" bindtap="onTapLogoutButton">退出</button>
     </view>
     <view class="btn-area" wx:if="{{ !user_email }}">
-      <button class="btn" type="primary">登录</button>
+      <button class="btn" type="primary" bindtap="onTapLoginButton">登录</button>
     </view>
   </view>
 </view>
