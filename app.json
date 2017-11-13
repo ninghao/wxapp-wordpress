@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/users/show",
     "pages/index/index",
     "pages/posts/show",
     "pages/demo/demo",
-    "pages/users/show",
     "pages/users/login"
   ],
   "window": {

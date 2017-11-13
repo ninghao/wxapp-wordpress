@@ -77,3 +77,27 @@ page {
   border-radius: 50%;
   margin: 0;
 }
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.profile__content {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.profile__avatar {
+  background: #e7e7e7;
+  width: 96px;
+  height: 96px;
+  margin-top: 40px;
+  border-radius: 50%;
+}
+
+.profile__action {
+  margin-bottom: 16px;
+}
