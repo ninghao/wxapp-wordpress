@@ -1,3 +1,6 @@
+<view class="toptips toptips_warn" wx:if="{{ showMessage }}">
+  {{ message }}
+</view>
 <view class="cells__title">用户名</view>
 <view class="cells cells_after-title">
   <view class="cell cell_input">
