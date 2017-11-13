@@ -1,17 +1,17 @@
 <view class="profile">
   <view class="profile__content">
-    <image class="profile__avatar" src="{{ user_avatar }}" />
-    <view class="profile__item">
+    <image class="profile__avatar" src="{{ user_avatar.lg }}" />
+    <view class="profile__item" wx:if="{{ user_caps.administrator }}">
       <view class="badge">管理员</view>
     </view>
     <view class="profile__item">{{ user_nicename || '未登录'}}</view>
     <view class="profile__item">{{ user_email }}</view>
   </view>
   <view class="profile__action">
-    <view class="btn-area">
+    <view class="btn-area" wx:if="{{ user_email }}">
       <button class="btn" type="primary">退出</button>
     </view>
-    <view class="btn-area">
+    <view class="btn-area" wx:if="{{ !user_email }}">
       <button class="btn" type="primary">登录</button>
     </view>
   </view>

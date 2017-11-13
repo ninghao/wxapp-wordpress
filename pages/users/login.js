@@ -1,3 +1,6 @@
+const app = getApp()
+const { setJWT } = app
+
 const API_BASE = 'https://wp-dev.ninghao.net/wp-json'
 const API_ROUTE = 'jwt-auth/v1/token'
 
@@ -64,7 +67,10 @@ Page({
             }, 3000)
             break
           case 200:
-            console.log(response.data)
+            setJWT(response.data)
+            wx.switchTab({
+              url: '/pages/users/show'
+            })
             break
           default:
             console.log(response)
