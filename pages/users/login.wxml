@@ -4,7 +4,8 @@
     <view class="cell__bd">
       <input
         class="input" focus
-        placeholder="输入用户名" />
+        placeholder="输入用户名"
+        bindinput="onInputUsername" />
     </view>
   </view>
 </view>
@@ -14,10 +15,11 @@
     <view class="cell__bd">
       <input
         class="input" password
-        placeholder="输入密码" />
+        placeholder="输入密码"
+        bindinput="onInputPassword" />
     </view>
   </view>
 </view>
 <view class="btn-area">
-  <button class="btn" type="primary">登录</button>
+  <button class="btn" type="primary" bindtap="onTapSubmitButton">登录</button>
 </view>
