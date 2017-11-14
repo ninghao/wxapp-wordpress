@@ -3,6 +3,7 @@
   <view class="cell cell_input">
     <view class="cell__bd">
       <input
+        value="{{ entity.title }}"
         class="input" focus
         placeholder="标题"
         bindinput="onInputTitle" />
@@ -14,6 +15,7 @@
   <view class="cell">
     <view class="cell__bd">
       <textarea
+        value="{{ entity.content }}"
         class="textarea"
         placeholder="正文"
         bindinput="onInputContent" />
@@ -27,7 +29,9 @@
       发布
     </view>
     <view class="cell__ft">
-      <switch bindchange="onChangeStatus" />
+      <switch
+        checked="{{ entity.status === 'publish' }}"
+        bindchange="onChangeStatus" />
     </view>
   </view>
 </view>
@@ -35,6 +39,6 @@
   <button class="btn" type="primary"
     plain="{{ entity.status !== 'publish' }}"
     bindtap="onTapSubmitButton">
-    {{ entity.status ? '发布' : '保存' }}  
+    {{ entity.status ? '发布' : '保存' }}
   </button>
 </view>
