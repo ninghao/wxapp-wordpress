@@ -7,7 +7,8 @@ Page({
   data: {
     entity: {},
     jwt: {},
-    isLoading: false
+    isLoading: false,
+    images: []
   },
   onShow () {
     const { jwt } = app.globalData
@@ -15,6 +16,24 @@ Page({
       jwt: {
         ...jwt
       }
+    })
+  },
+  onChooseImage () {
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original'],
+      sourceType: ['album', 'camera'],
+      success: (response) => {
+        this.setData({
+          images: response.tempFilePaths
+        })
+      }
+    })
+  },
+  onPreviewImage (event) {
+    wx.previewImage({
+      current: event.target.dataset.src,
+      urls: this.data.images
     })
   },
   onInputTitle (event) {

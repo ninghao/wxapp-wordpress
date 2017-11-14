@@ -31,7 +31,9 @@
         <view class="uploader__bd">
           <view class="uploader__files">
             <block wx:for="{{ images }}" wx:key="*this">
-              <view class="uploader__file">
+              <view class="uploader__file"
+                bindtap="onPreviewImage"
+                data-src="{{ item }}">
                 <image class="uploader__img"
                   src="{{ item }}"
                   mode="aspectFill" />
@@ -40,7 +42,7 @@
             </block>
           </view>
           <view class="uploader__input-box">
-            <view class="uploader__input"></view>
+            <view class="uploader__input" bindtap="onChooseImage"></view>
           </view>
         </view>
       </view>
