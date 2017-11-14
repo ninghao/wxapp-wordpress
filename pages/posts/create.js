@@ -6,7 +6,8 @@ const API_ROUTE = 'wp/v2/posts'
 Page({
   data: {
     entity: {},
-    jwt: {}
+    jwt: {},
+    isLoading: false
   },
   onShow () {
     const { jwt } = app.globalData
@@ -34,6 +35,10 @@ Page({
   onTapSubmitButton () {
     console.log(this.data.entity)
 
+    this.setData({
+      isLoading: true
+    })
+
     wx.request({
       url: `${ API_BASE }/${ API_ROUTE }`,
       method: 'POST',
@@ -57,6 +62,11 @@ Page({
           default:
             console.log(response)
         }
+      },
+      complete: () => {
+        this.setData({
+          isLoading: false
+        })
       }
     })
   }

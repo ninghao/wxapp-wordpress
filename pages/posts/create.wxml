@@ -37,6 +37,8 @@
 </view>
 <view class="btn-area">
   <button class="btn" type="primary"
+    disabled="{{ !entity.title || !entity.content }}"
+    loading="{{ isLoading }}"
     plain="{{ entity.status !== 'publish' }}"
     bindtap="onTapSubmitButton">
     {{ entity.status ? '发布' : '保存' }}
