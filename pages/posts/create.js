@@ -13,11 +13,9 @@ Page({
     })
   },
   onChangeStatus (event) {
-    if (event.detail.value) {
-      this.setData({
-        ['entity.status']: 'publish'
-      })
-    }
+    this.setData({
+      ['entity.status']: event.detail.value ? 'publish' : ''
+    })
   },
   onTapSubmitButton () {
     console.log(this.data.entity)

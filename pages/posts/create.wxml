@@ -33,5 +33,8 @@
 </view>
 <view class="btn-area">
   <button class="btn" type="primary"
-    bindtap="onTapSubmitButton">发布</button>
+    plain="{{ entity.status !== 'publish' }}"
+    bindtap="onTapSubmitButton">
+    {{ entity.status ? '发布' : '保存' }}  
+  </button>
 </view>
