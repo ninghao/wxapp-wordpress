@@ -20,6 +20,14 @@ Page({
       }
     })
   },
+  onLongpressImage (event) {
+    wx.showActionSheet({
+      itemList: ['替换图片', '删除图片'],
+      success: (response) => {
+        console.log(response)
+      }
+    })
+  },
   onChooseImage () {
     wx.chooseImage({
       count: 1,

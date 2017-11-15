@@ -33,6 +33,7 @@
             <block wx:for="{{ images }}" wx:key="*this">
               <view class="uploader__file"
                 bindtap="onPreviewImage"
+                bindlongpress="onLongpressImage"
                 data-src="{{ item }}">
                 <image class="uploader__img"
                   src="{{ item }}"
