@@ -2,13 +2,15 @@ const app = getApp()
 
 const API_BASE = 'https://wp-dev.ninghao.net/wp-json'
 const API_ROUTE = 'wp/v2/posts'
+const API_ROUTE_MEDIA = 'wp/v2/media'
 
 Page({
   data: {
     entity: {},
     jwt: {},
     isLoading: false,
-    images: []
+    images: [],
+    progress: []
   },
   onShow () {
     const { jwt } = app.globalData
@@ -24,8 +26,33 @@ Page({
       sizeType: ['original'],
       sourceType: ['album', 'camera'],
       success: (response) => {
+        const images = response.tempFilePaths
+
         this.setData({
-          images: response.tempFilePaths
+          images
+        })
+
+        images.map((filePath, index) => {
+          const uploadTask = wx.uploadFile({
+            url: `${ API_BASE }/${ API_ROUTE_MEDIA }`,
+            filePath,
+            name: 'file',
+            header: {
+              'Authorization': `Bearer ${ this.data.jwt.token }`
+            },
+            success: (response) => {
+              console.log(response)
+            }
+          })
+
+          uploadTask.onProgressUpdate((response) => {
+            const progress = [...this.data.progress]
+            progress[index] = response.progress
+
+            this.setData({
+              progress
+            })
+          })
         })
       }
     })
