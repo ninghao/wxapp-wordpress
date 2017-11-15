@@ -30,13 +30,14 @@
         </view>
         <view class="uploader__bd">
           <view class="uploader__files">
-            <block wx:for="{{ images }}" wx:key="*this">
+            <block wx:for="{{ images }}" wx:key="item.path">
               <view class="uploader__file"
                 bindtap="onPreviewImage"
                 bindlongpress="onLongpressImage"
-                data-src="{{ item }}">
+                data-id="{{ item.id }}"
+                data-src="{{ item.path }}">
                 <image class="uploader__img"
-                  src="{{ item }}"
+                  src="{{ item.path }}"
                   mode="aspectFill" />
                 <progress percent="{{ progress[index] }}" />
               </view>

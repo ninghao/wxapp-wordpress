@@ -21,6 +21,7 @@ Page({
     })
   },
   onLongpressImage (event) {
+    console.log(event)
     wx.showActionSheet({
       itemList: ['替换图片', '删除图片'],
       success: (response) => {
@@ -34,16 +35,16 @@ Page({
       sizeType: ['original'],
       sourceType: ['album', 'camera'],
       success: (response) => {
-        const images = response.tempFilePaths
+        const images = response.tempFiles
 
         this.setData({
           images
         })
 
-        images.map((filePath, index) => {
+        images.map((file, index) => {
           const uploadTask = wx.uploadFile({
             url: `${ API_BASE }/${ API_ROUTE_MEDIA }`,
-            filePath,
+            filePath: file.path,
             name: 'file',
             header: {
               'Authorization': `Bearer ${ this.data.jwt.token }`
@@ -51,9 +52,15 @@ Page({
             success: (response) => {
               // console.log(response)
               const media = JSON.parse(response.data)
+              const images = this.data.images
+              images[index] = {
+                ...file,
+                id: media.id
+              }
 
               this.setData({
-                'entity.featured_media': media.id
+                'entity.featured_media': media.id,
+                images
               })
             }
           })
@@ -71,9 +78,13 @@ Page({
     })
   },
   onPreviewImage (event) {
+    const urls = this.data.images.map((image) => {
+      return image.path
+    })
+
     wx.previewImage({
-      current: event.target.dataset.src,
-      urls: this.data.images
+      current: event.currentTarget.dataset.src,
+      urls
     })
   },
   onInputTitle (event) {
