@@ -41,7 +41,12 @@ Page({
               'Authorization': `Bearer ${ this.data.jwt.token }`
             },
             success: (response) => {
-              console.log(response)
+              // console.log(response)
+              const media = JSON.parse(response.data)
+
+              this.setData({
+                'entity.featured_media': media.id
+              })
             }
           })
 
@@ -98,7 +103,9 @@ Page({
         switch (response.statusCode) {
           case 201:
             this.setData({
-              entity: {}
+              entity: {},
+              images: [],
+              progress: []
             })
 
             wx.navigateTo({
