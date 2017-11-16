@@ -1,3 +1,4 @@
+import { validateToken } from '../../libs/auth-jwt'
 const app = getApp()
 
 const API_BASE = 'https://wp-dev.ninghao.net/wp-json'
@@ -14,6 +15,15 @@ Page({
   },
   onShow () {
     const { jwt } = app.globalData
+
+    validateToken(jwt, (result) => {
+      if (!result) {
+        wx.navigateTo({
+          url: '/pages/users/login'
+        })
+      }
+    })
+
     this.setData({
       jwt: {
         ...jwt
