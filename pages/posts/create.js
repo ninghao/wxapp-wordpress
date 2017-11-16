@@ -20,12 +20,37 @@ Page({
       }
     })
   },
-  onLongpressImage (event) {
-    console.log(event)
-    wx.showActionSheet({
-      itemList: ['替换图片', '删除图片'],
+  destroyImage (id) {
+    wx.request({
+      url: `${ API_BASE }/${ API_ROUTE_MEDIA }/${ id }?force=true`,
+      method: 'DELETE',
+      header: {
+        'Authorization': `Bearer ${ this.data.jwt.token }`
+      },
       success: (response) => {
-        console.log(response)
+        const images = this.data.images.filter((image) => {
+          return image.id !== id
+        })
+
+        this.setData({
+          images
+        })
+      }
+    })
+  },
+  onLongpressImage (event) {
+    const id = event.currentTarget.dataset.id
+
+    wx.showActionSheet({
+      itemList: ['删除图片'],
+      success: (response) => {
+        switch (response.tapIndex) {
+          case 0:
+            this.destroyImage(id)
+            break
+          default:
+            console.log(response)
+        }
       }
     })
   },
