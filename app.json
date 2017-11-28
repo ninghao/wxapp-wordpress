@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/users/register",
     "pages/posts/create",
     "pages/index/index",
     "pages/users/login",
