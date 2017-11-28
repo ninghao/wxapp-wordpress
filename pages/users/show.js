@@ -26,5 +26,10 @@ Page({
     wx.navigateTo({
       url: '/pages/users/login'
     })
+  },
+  onTapRegisterButton () {
+    wx.navigateTo({
+      url: '/pages/users/register'
+    })
   }
 })

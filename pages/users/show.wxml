@@ -13,6 +13,7 @@
     </view>
     <view class="btn-area" wx:if="{{ !user_email }}">
       <button class="btn" type="primary" bindtap="onTapLoginButton">登录</button>
+      <button class="btn" type="default" bindtap="onTapRegisterButton">注册</button>
     </view>
   </view>
 </view>

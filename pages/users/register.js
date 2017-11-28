@@ -4,6 +4,7 @@ const { setJWT } = app
 const API_BASE = 'https://wp-dev.ninghao.net/wp-json'
 const API_ROUTE = 'jwt-auth/v1/token'
 const API_ROUTE_USER_REGISTER = 'users/v1/register'
+const API_ROUTE_JWT_TOKEN = 'jwt-auth/v1/token'
 
 Page({
   data: {
@@ -72,11 +73,24 @@ Page({
               })
             }, 3000)
             break
-          case 200:
-            // setJWT(response.data)
-            // wx.switchTab({
-            //   url: '/pages/users/show'
-            // })
+          case 201:
+            wx.request({
+              url: `${ API_BASE }/${ API_ROUTE_JWT_TOKEN }`,
+              method: 'POST',
+              data: {
+                username,
+                password
+              },
+              success: (response) => {
+                if (response.statusCode === 200) {
+                  setJWT(response.data)
+                  wx.switchTab({
+                    url: '/pages/users/show'
+                  })
+                }
+              }
+            })
+
             break
           default:
             console.log(response)
