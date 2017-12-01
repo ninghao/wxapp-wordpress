@@ -1,6 +1,9 @@
 const app = getApp()
 const { removeJWT } = app
 
+const API_BASE = 'https://wp-dev.ninghao.net/wp-json'
+const API_ROUTE_WEIXIN_BIND = 'weixin/v1/bind'
+
 Page({
   data: {
 
@@ -23,6 +26,11 @@ Page({
             success: (response) => {
               if (response) {
                 console.log(response)
+                this.weixinBind({
+                  userInfo: response,
+                  userId: this.data.user_id,
+                  token: this.data.token
+                })
               }
             }
           })
@@ -47,6 +55,27 @@ Page({
   onTapRegisterButton () {
     wx.navigateTo({
       url: '/pages/users/register'
+    })
+  },
+  weixinBind ({ userInfo, userId, token } = obj) {
+    wx.login({
+      success: (login) => {
+        wx.request({
+          url: `${ API_BASE }/${ API_ROUTE_WEIXIN_BIND }`,
+          method: 'POST',
+          header: {
+            'Authorization': `Bearer ${ token }`
+          },
+          data: {
+            code: login.code,
+            userInfo,
+            userId
+          },
+          success: (response) => {
+            console.log(response)
+          }
+        })
+      }
     })
   }
 })
