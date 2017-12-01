@@ -12,6 +12,23 @@ Page({
         ...jwt
       })
     }
+
+    wx.showModal({
+      title: '绑定微信帐号',
+      content: '绑定以后，可以直接用微信帐号登录。',
+      success: (response) => {
+        if (response.confirm) {
+          // console.log(response)
+          wx.getUserInfo({
+            success: (response) => {
+              if (response) {
+                console.log(response)
+              }
+            }
+          })
+        }
+      }
+    })
   },
   onTapLogoutButton () {
     removeJWT()
