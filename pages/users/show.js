@@ -1,7 +1,7 @@
 import { weixinLogin } from '../../libs/weixin'
 
 const app = getApp()
-const { removeJWT } = app
+const { removeJWT, setJWT } = app
 
 const API_BASE = 'https://wp-dev.ninghao.net/wp-json'
 const API_ROUTE_WEIXIN_BIND = 'weixin/v1/bind'
@@ -41,7 +41,18 @@ Page({
     })
   },
   onTapWeixinLoginButton () {
-    weixinLogin()
+    weixinLogin((response) => {
+      switch (response.statusCode) {
+        case 201:
+          setJWT(response.data)
+          this.setData({
+            ...response.data
+          })
+          break
+        default:
+          console.log(response)
+      }
+    })
   },
   onTapLogoutButton () {
     removeJWT()

@@ -1,7 +1,7 @@
 const API_BASE = 'https://wp-dev.ninghao.net/wp-json'
 const API_ROUTE_WEIXIN_LOGIN = 'weixin/v1/login'
 
-const weixinLogin = () => {
+const weixinLogin = (callback) => {
   wx.login({
     success: (login) => {
       wx.request({
@@ -11,7 +11,7 @@ const weixinLogin = () => {
           code: login.code
         },
         success: (response) => {
-          console.log(response)
+          callback(response)
         }
       })
     }
