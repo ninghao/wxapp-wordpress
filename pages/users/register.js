@@ -1,3 +1,5 @@
+import { weixinBind } from '../../libs/weixin'
+
 const app = getApp()
 const { setJWT } = app
 
@@ -12,7 +14,14 @@ Page({
     email: '',
     password: '',
     showMessage: false,
-    message: ''
+    message: '',
+    bind: false
+  },
+  onLoad (options) {
+    const bind = options.bind ? true : false
+    this.setData({
+      bind
+    })
   },
   onInputUsername (event) {
     this.setData({
@@ -84,6 +93,21 @@ Page({
               success: (response) => {
                 if (response.statusCode === 200) {
                   setJWT(response.data)
+
+                  if (this.data.bind) {
+                    wx.getUserInfo({
+                      success: (userInfo) => {
+                        if (userInfo) {
+                          weixinBind({
+                            userInfo,
+                            userId: response.data.user_id,
+                            token: response.data.token
+                          })
+                        }
+                      }
+                    })
+                  }
+
                   wx.switchTab({
                     url: '/pages/users/show'
                   })

@@ -35,5 +35,7 @@
   </view>
 </view>
 <view class="btn-area">
-  <button class="btn" type="primary" bindtap="onTapSubmitButton">注册</button>
+  <button class="btn" type="primary" bindtap="onTapSubmitButton">
+    {{ bind? '注册新用户并绑定微信帐号' : '注册' }}
+  </button>
 </view>

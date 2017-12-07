@@ -27,4 +27,7 @@
   <button class="btn" type="primary" bindtap="onTapSubmitButton">
     {{ bind? '绑定微信帐号' : '登录' }}
   </button>
+  <button class="btn" type="default" bindtap="onTapRegisterButton" wx:if="{{ bind }}">
+    注册新用户并绑定微信帐号
+  </button>
 </view>

@@ -30,6 +30,11 @@ Page({
       password: event.detail.value
     })
   },
+  onTapRegisterButton () {
+    wx.navigateTo({
+      url: '/pages/users/register?bind=true'
+    })
+  },
   onTapSubmitButton () {
     console.log(this.data.username, this.data.password)
 
