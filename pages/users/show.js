@@ -1,4 +1,4 @@
-import { weixinLogin } from '../../libs/weixin'
+import { weixinLogin, weixinBind } from '../../libs/weixin'
 
 const app = getApp()
 const { removeJWT, setJWT } = app
@@ -28,7 +28,7 @@ Page({
             success: (response) => {
               if (response) {
                 console.log(response)
-                this.weixinBind({
+                weixinBind({
                   userInfo: response,
                   userId: this.data.user_id,
                   token: this.data.token
@@ -47,6 +47,11 @@ Page({
           setJWT(response.data)
           this.setData({
             ...response.data
+          })
+          break
+        case 404:
+          wx.navigateTo({
+            url: '/pages/users/login?bind=true'
           })
           break
         default:
@@ -71,27 +76,6 @@ Page({
   onTapRegisterButton () {
     wx.navigateTo({
       url: '/pages/users/register'
-    })
-  },
-  weixinBind ({ userInfo, userId, token } = obj) {
-    wx.login({
-      success: (login) => {
-        wx.request({
-          url: `${ API_BASE }/${ API_ROUTE_WEIXIN_BIND }`,
-          method: 'POST',
-          header: {
-            'Authorization': `Bearer ${ token }`
-          },
-          data: {
-            code: login.code,
-            userInfo,
-            userId
-          },
-          success: (response) => {
-            console.log(response)
-          }
-        })
-      }
     })
   }
 })

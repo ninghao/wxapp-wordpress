@@ -24,5 +24,7 @@
   </view>
 </view>
 <view class="btn-area">
-  <button class="btn" type="primary" bindtap="onTapSubmitButton">登录</button>
+  <button class="btn" type="primary" bindtap="onTapSubmitButton">
+    {{ bind? '绑定微信帐号' : '登录' }}
+  </button>
 </view>
