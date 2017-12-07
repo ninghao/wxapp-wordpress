@@ -1,3 +1,5 @@
+import { weixinLogin } from '../../libs/weixin'
+
 const app = getApp()
 const { removeJWT } = app
 
@@ -37,6 +39,9 @@ Page({
         }
       }
     })
+  },
+  onTapWeixinLoginButton () {
+    weixinLogin()
   },
   onTapLogoutButton () {
     removeJWT()
