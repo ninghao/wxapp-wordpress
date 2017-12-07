@@ -18,27 +18,42 @@ Page({
       })
     }
 
-    wx.showModal({
-      title: '绑定微信帐号',
-      content: '绑定以后，可以直接用微信帐号登录。',
-      success: (response) => {
-        if (response.confirm) {
-          // console.log(response)
-          wx.getUserInfo({
+    const flashData = wx.getStorageSync('flash')
+    if (flashData) {
+      wx.removeStorageSync('flash')
+
+      const flash = JSON.parse(flashData)
+
+      switch (flash.action) {
+        case 'bindWeixin':
+          wx.showModal({
+            title: '绑定微信帐号',
+            content: '绑定以后，可以直接用微信帐号登录。',
             success: (response) => {
-              if (response) {
-                console.log(response)
-                weixinBind({
-                  userInfo: response,
-                  userId: this.data.user_id,
-                  token: this.data.token
+              if (response.confirm) {
+                // console.log(response)
+                wx.getUserInfo({
+                  success: (response) => {
+                    if (response) {
+                      console.log(response)
+                      weixinBind({
+                        userInfo: response,
+                        userId: this.data.user_id,
+                        token: this.data.token
+                      })
+                    }
+                  }
                 })
               }
             }
           })
-        }
+          break
+        default:
+
       }
-    })
+    }
+
+
   },
   onTapWeixinLoginButton () {
     weixinLogin((response) => {

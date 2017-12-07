@@ -108,6 +108,15 @@ Page({
                     })
                   }
 
+                  const flash = JSON.stringify(
+                    {
+                      action: 'bindWeixin',
+                      message: '绑定微信帐号'
+                    }
+                  )
+
+                  wx.setStorageSync('flash', flash)
+
                   wx.switchTab({
                     url: '/pages/users/show'
                   })
