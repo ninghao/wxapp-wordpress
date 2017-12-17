@@ -15,9 +15,12 @@ Page({
     isLoading: true
   },
   onLoad (options) {
-    const id = options.id
-    // const id = 31
+    // const id = options.id
+    const id = 64
 
+    this.getPost(id)
+  },
+  getPost (id) {
     wx.request({
       url: `${ API_BASE }/${ API_ROUTE_POSTS }/${ id }?_embed=true`,
       success: (response) => {

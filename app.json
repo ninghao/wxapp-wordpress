@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/posts/show",
     "pages/users/show",
     "pages/users/register",
     "pages/posts/create",
     "pages/index/index",
     "pages/users/login",
-    "pages/posts/show",
     "pages/demo/demo"
   ],
   "window": {
