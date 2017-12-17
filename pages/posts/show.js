@@ -1,8 +1,10 @@
+import {
+  API_BASE,
+  API_ROUTE_POSTS
+} from '../../config/api'
+
 const app = getApp()
 const { towxml } = app
-
-const API_BASE = 'https://wp-dev.ninghao.net/wp-json'
-const API_ROUTE = 'wp/v2/posts'
 
 Page({
   data: {
@@ -17,7 +19,7 @@ Page({
     // const id = 31
 
     wx.request({
-      url: `${ API_BASE }/${ API_ROUTE }/${ id }?_embed=true`,
+      url: `${ API_BASE }/${ API_ROUTE_POSTS }/${ id }?_embed=true`,
       success: (response) => {
         const entity = response.data
         const title = entity.title.rendered

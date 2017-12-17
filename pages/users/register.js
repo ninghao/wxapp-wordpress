@@ -1,12 +1,13 @@
+import {
+  API_BASE,
+  API_ROUTE_USER_REGISTER,
+  API_ROUTE_JWT_TOKEN
+} from '../../config/api'
+
 import { weixinBind } from '../../libs/weixin'
 
 const app = getApp()
 const { setJWT } = app
-
-const API_BASE = 'https://wp-dev.ninghao.net/wp-json'
-const API_ROUTE = 'jwt-auth/v1/token'
-const API_ROUTE_USER_REGISTER = 'users/v1/register'
-const API_ROUTE_JWT_TOKEN = 'jwt-auth/v1/token'
 
 Page({
   data: {

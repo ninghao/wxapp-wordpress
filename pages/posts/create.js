@@ -1,9 +1,11 @@
+import {
+  API_BASE,
+  API_ROUTE_POSTS,
+  API_ROUTE_MEDIA
+} from '../../config/api'
+
 import { validateToken } from '../../libs/auth-jwt'
 const app = getApp()
-
-const API_BASE = 'https://wp-dev.ninghao.net/wp-json'
-const API_ROUTE = 'wp/v2/posts'
-const API_ROUTE_MEDIA = 'wp/v2/media'
 
 Page({
   data: {
@@ -145,7 +147,7 @@ Page({
     })
 
     wx.request({
-      url: `${ API_BASE }/${ API_ROUTE }`,
+      url: `${ API_BASE }/${ API_ROUTE_POSTS }`,
       method: 'POST',
       header: {
         'Authorization': `Bearer ${ this.data.jwt.token }`

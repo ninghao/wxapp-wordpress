@@ -1,10 +1,12 @@
+import {
+  API_BASE,
+  API_ROUTE_JWT_TOKEN
+} from '../../config/api'
+
 import { weixinBind } from '../../libs/weixin'
 
 const app = getApp()
 const { setJWT } = app
-
-const API_BASE = 'https://wp-dev.ninghao.net/wp-json'
-const API_ROUTE = 'jwt-auth/v1/token'
 
 Page({
   data: {
@@ -39,7 +41,7 @@ Page({
     console.log(this.data.username, this.data.password)
 
     wx.request({
-      url: `${ API_BASE }/${ API_ROUTE }`,
+      url: `${ API_BASE }/${ API_ROUTE_JWT_TOKEN }`,
       method: 'POST',
       data: {
         username: this.data.username,

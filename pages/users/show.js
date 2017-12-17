@@ -1,10 +1,12 @@
+import {
+  API_BASE,
+  API_ROUTE_WEIXIN_BIND
+} from '../../config/api'
+
 import { weixinLogin, weixinBind } from '../../libs/weixin'
 
 const app = getApp()
 const { removeJWT, setJWT } = app
-
-const API_BASE = 'https://wp-dev.ninghao.net/wp-json'
-const API_ROUTE_WEIXIN_BIND = 'weixin/v1/bind'
 
 Page({
   data: {

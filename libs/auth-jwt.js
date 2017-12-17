@@ -1,5 +1,7 @@
-const API_BASE = 'https://wp-dev.ninghao.net/wp-json'
-const API_ROUTE_JWT_VALIDATE = 'jwt-auth/v1/token/validate'
+import {
+  API_BASE,
+  API_ROUTE_JWT_VALIDATE
+} from '../config/api'
 
 const validateToken = (jwt = {}, callback = () => {
 

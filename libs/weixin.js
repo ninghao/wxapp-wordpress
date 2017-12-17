@@ -1,6 +1,8 @@
-const API_BASE = 'https://wp-dev.ninghao.net/wp-json'
-const API_ROUTE_WEIXIN_LOGIN = 'weixin/v1/login'
-const API_ROUTE_WEIXIN_BIND = 'weixin/v1/bind'
+import {
+  API_BASE,
+  API_ROUTE_WEIXIN_LOGIN,
+  API_ROUTE_WEIXIN_BIND
+} from '../config/api'
 
 const weixinLogin = (callback) => {
   wx.login({
