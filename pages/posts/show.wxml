@@ -3,7 +3,7 @@
 
 <template is="spinner" data="{{ isLoading }}" />
 
-<view class="featured-media" wx:if="{{ featuredMedia }}">
+<view class="featured-media" wx:if="{{ featuredMedia }}" wx:if="{{ false }}">
   <image mode="aspectFill" src="{{ featuredMedia }}" />
 </view>
 
@@ -16,6 +16,24 @@
     <view class="article__meta">
       <image class="article__avatar" src="{{ author.avatar_urls['48'] }}" />
       <view>{{ author.name }}</view>
+    </view>
+  </view>
+  <view class="comments" wx:if="{{ comments.length }}">
+    <view class="comment" wx:for="{{ comments }}" wx:key="{{ item.id }}">
+      <view class="comment__avatar">
+        <image class="comment__avatar_img" src="{{ item.author_avatar_urls['48'] }}" />
+      </view>
+      <view class="comment__content">
+        <text class="comment__content_author">
+          {{ item.author_name }}
+        </text>
+        <text class="comment__content_date">
+          {{ item.date }}
+        </text>
+        <view>
+          {{ item.content.rendered }}
+        </view>
+      </view>
     </view>
   </view>
 </view>

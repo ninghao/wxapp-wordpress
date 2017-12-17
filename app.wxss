@@ -6,6 +6,13 @@ page {
   font-family: "STHeitiTC-Light", "Microsoft YaHei Light", "Hiragino Sans GB", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+.comment__avatar_img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin: 0
+}
+
 .spinner {
   margin: 32px auto;
   width: 70px;

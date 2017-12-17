@@ -13,7 +13,8 @@ Page({
     content: {},
     featured_media: '',
     author: {},
-    isLoading: true
+    isLoading: true,
+    comments: []
   },
   onLoad (options) {
     // const id = options.id
@@ -27,6 +28,12 @@ Page({
       url: `${ API_BASE }/${ API_ROUTE_COMMENTS }?post=${ postId }&_embed=true`,
       success: (response) => {
         console.log(response)
+        const comments = response.data
+        if (comments.length > 0) {
+          this.setData({
+            comments
+          })
+        }
       }
     })
   },
