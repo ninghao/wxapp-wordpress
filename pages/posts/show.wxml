@@ -24,12 +24,8 @@
         <image class="comment__avatar_img" src="{{ item.author_avatar_urls['48'] }}" />
       </view>
       <view class="comment__content">
-        <text class="comment__content_author">
-          {{ item.author_name }}
-        </text>
-        <text class="comment__content_date">
-          {{ item.date }}
-        </text>
+        <text class="comment__content_author">{{ item.author_name }}</text>
+        <text class="comment__content_date">{{ item.date }}</text>
         <view>
           {{ item.content.rendered }}
         </view>
