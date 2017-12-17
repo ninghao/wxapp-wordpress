@@ -1,6 +1,7 @@
 import {
   API_BASE,
-  API_ROUTE_POSTS
+  API_ROUTE_POSTS,
+  API_ROUTE_COMMENTS
 } from '../../config/api'
 
 const app = getApp()
@@ -19,6 +20,15 @@ Page({
     const id = 64
 
     this.getPost(id)
+    this.getComments(id)
+  },
+  getComments (postId) {
+    wx.request({
+      url: `${ API_BASE }/${ API_ROUTE_COMMENTS }?post=${ postId }&_embed=true`,
+      success: (response) => {
+        console.log(response)
+      }
+    })
   },
   getPost (id) {
     wx.request({
