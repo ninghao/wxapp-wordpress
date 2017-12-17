@@ -23,12 +23,27 @@ Page({
     this.getPost(id)
     this.getComments(id)
   },
+  transformComments (comments) {
+    return comments.map((item) => {
+      const content = {
+        ...item.content,
+        wxml: towxml.toJson(item.content.rendered, 'html')
+      }
+
+      let comment = {
+        ...item,
+        content
+      }
+
+      return comment
+    })
+  },
   getComments (postId) {
     wx.request({
       url: `${ API_BASE }/${ API_ROUTE_COMMENTS }?post=${ postId }&_embed=true`,
       success: (response) => {
         console.log(response)
-        const comments = response.data
+        const comments = this.transformComments(response.data)
         if (comments.length > 0) {
           this.setData({
             comments

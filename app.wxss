@@ -34,6 +34,10 @@ page {
   color: #999;
 }
 
+.comment__content_body {
+  margin-top: 8px;
+}
+
 .comment__avatar {
   margin-right: 8px;
 }
