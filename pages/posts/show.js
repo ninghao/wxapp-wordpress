@@ -4,6 +4,10 @@ import {
   API_ROUTE_COMMENTS
 } from '../../config/api'
 
+import moment from '../../vendor/moment/moment'
+import '../../vendor/moment/locale/zh-cn'
+moment.locale('zh-cn')
+
 const app = getApp()
 const { towxml } = app
 
@@ -30,9 +34,12 @@ Page({
         wxml: towxml.toJson(item.content.rendered, 'html')
       }
 
+      const fromNow = moment.utc(item.date).local().fromNow()
+
       let comment = {
         ...item,
-        content
+        content,
+        fromNow
       }
 
       return comment

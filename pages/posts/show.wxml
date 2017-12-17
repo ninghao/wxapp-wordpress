@@ -25,7 +25,7 @@
       </view>
       <view class="comment__content">
         <text class="comment__content_author">{{ item.author_name }}</text>
-        <text class="comment__content_date">{{ item.date }}</text>
+        <text class="comment__content_date">{{ item.fromNow }}</text>
         <view class="comment__content_body">
           <template is="entry" data="{{ ...item.content.wxml }}" />
         </view>
