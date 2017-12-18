@@ -22,14 +22,50 @@ Page({
     total: 0,
     totalPages: 0,
     currentPage: 1,
-    isEarth: false
+    isEarth: false,
+    comment: {},
+    placeholder: '',
+    focus: false,
+    jwt: {}
   },
   onLoad (options) {
     // const id = options.id
     const id = 64
 
+    const { jwt } = app.globalData
+
+    this.setData({
+      jwt
+    })
+
     this.getPost(id)
     this.getComments(id)
+  },
+  onInputComment (event) {
+    this.setData({
+      ['comment.content']: event.detail.value
+    })
+  },
+  onSubmitComment () {
+    wx.request({
+      url: `${ API_BASE }/${ API_ROUTE_COMMENTS }`,
+      method: 'POST',
+      data: {
+        content: this.data.comment.content,
+        post: this.data.id
+      },
+      header: {
+        'Authorization': `Bearer ${ this.data.jwt.token }`
+      },
+      success: (response) => {
+        if (response.statusCode === 201) {
+          this.getComments(this.data.id)
+          this.setData({
+            comment: {}
+          })
+        }
+      }
+    })
   },
   onPullDownRefresh () {
     const id = this.data.id

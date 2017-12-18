@@ -52,6 +52,7 @@ page {
 
 .comment__content_body {
   margin-top: 8px;
+  line-height: 1.5;
 }
 
 .comment__content_quote {
