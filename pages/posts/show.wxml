@@ -30,7 +30,10 @@
           - <text class="comment__content_author">{{ item.reply.author_name }}</text>
           <text class="comment__content_date">{{ item.reply.fromNow }}</text>
         </view>
-        <view class="comment__content_body">
+        <view class="comment__content_body"
+          bindtap="onTapComment"
+          data-id="{{ item.id }}"
+          data-author="{{ item.author_name }}">
           <template is="entry" data="{{ ...item.content.wxml }}" />
         </view>
       </view>

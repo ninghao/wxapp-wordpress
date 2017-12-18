@@ -51,8 +51,8 @@ Page({
       url: `${ API_BASE }/${ API_ROUTE_COMMENTS }`,
       method: 'POST',
       data: {
-        content: this.data.comment.content,
-        post: this.data.id
+        ...this.data.comment,
+        post: this.data.id,
       },
       header: {
         'Authorization': `Bearer ${ this.data.jwt.token }`
@@ -65,6 +65,19 @@ Page({
           })
         }
       }
+    })
+  },
+  onBlurComment () {
+    this.setData({
+      focus: false,
+      placeholder: ''
+    })
+  },
+  onTapComment (event) {
+    this.setData({
+      focus: true,
+      placeholder: `回复：${ event.currentTarget.dataset.author }`,
+      ['comment.parent']: event.currentTarget.dataset.id
     })
   },
   onPullDownRefresh () {
