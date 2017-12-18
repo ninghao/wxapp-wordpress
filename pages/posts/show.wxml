@@ -45,7 +45,7 @@
 <template is="footer" data="{{ isEarth }}" />
 
 <view class="toolbar">
-  <view class="toolbar__overlay">
+  <view class="toolbar__overlay" wx:if="{{ !loggedIn }}">
     <view class="toolbar__overlay_text">评论？请先登录</view>
     <view class="toolbar__overlay_button">
       <button type="primary" size="mini" bindtap="onTapLoginButton">

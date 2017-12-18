@@ -4,6 +4,7 @@ import {
   API_ROUTE_COMMENTS
 } from '../../config/api'
 
+import { validateToken } from '../../libs/auth-jwt'
 import moment from '../../vendor/moment/moment'
 import '../../vendor/moment/locale/zh-cn'
 moment.locale('zh-cn')
@@ -26,13 +27,22 @@ Page({
     comment: {},
     placeholder: '',
     focus: false,
-    jwt: {}
+    jwt: {},
+    loggedIn: true
   },
   onLoad (options) {
     // const id = options.id
     const id = 64
 
     const { jwt } = app.globalData
+
+    validateToken(jwt, (result) => {
+      if (!result) {
+        this.setData({
+          loggedIn: false
+        })
+      }
+    })
 
     this.setData({
       jwt
@@ -65,6 +75,11 @@ Page({
           })
         }
       }
+    })
+  },
+  onTapLoginButton () {
+    wx.switchTab({
+      url: '/pages/users/show'
     })
   },
   onBlurComment () {
