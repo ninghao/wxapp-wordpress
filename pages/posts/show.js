@@ -50,6 +50,14 @@ Page({
 
     this.getPost(id)
     this.getComments(id)
+
+    setInterval(() => {
+      const comments = this.transformComments(this.data.comments)
+
+      this.setData({
+        comments
+      })
+    }, 1000 * 60)
   },
   onInputComment (event) {
     this.setData({
