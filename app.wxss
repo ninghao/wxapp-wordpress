@@ -38,6 +38,16 @@ page {
   margin-top: 8px;
 }
 
+.comment__content_quote {
+  font-size: 12px;
+  font-style: italic;
+  color: #999;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-left: 4px;
+  border-left: 2px solid #e0e0e0;
+}
+
 .comment__avatar {
   margin-right: 8px;
 }

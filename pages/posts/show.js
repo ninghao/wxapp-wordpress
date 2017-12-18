@@ -42,6 +42,21 @@ Page({
         fromNow
       }
 
+      if (item.parent !== 0) {
+        const inReplyTo = item._embedded['in-reply-to'][0]
+
+        const reply = {
+          ...inReplyTo,
+          wxml: towxml.toJson(inReplyTo.content.rendered, 'html'),
+          fromNow: moment.utc(inReplyTo.date).local().fromNow()
+        }
+
+        comment = {
+          ...comment,
+          reply
+        }
+      }
+
       return comment
     })
   },

@@ -26,6 +26,11 @@
       <view class="comment__content">
         <text class="comment__content_author">{{ item.author_name }}</text>
         <text class="comment__content_date">{{ item.fromNow }}</text>
+        <view class="comment__content_quote" wx:if="{{ item.parent }}">
+          <template is="entry" data="{{ ...item.reply.wxml }}" />
+          - <text class="comment__content_author">{{ item.reply.author_name }}</text>
+          <text class="comment__content_date">{{ item.reply.fromNow }}</text>
+        </view>
         <view class="comment__content_body">
           <template is="entry" data="{{ ...item.content.wxml }}" />
         </view>
