@@ -45,6 +45,14 @@
 <template is="footer" data="{{ isEarth }}" />
 
 <view class="toolbar">
+  <view class="toolbar__overlay">
+    <view class="toolbar__overlay_text">评论？请先登录</view>
+    <view class="toolbar__overlay_button">
+      <button type="primary" size="mini" bindtap="onTapLoginButton">
+        登录
+      </button>
+    </view>
+  </view>
   <input
     class="toolbar__input"
     confirm-type="send"
