@@ -15,5 +15,7 @@
     </view>
   </view>
 </navigator>
-<template is="spinner" data="{{ isLoading }}" />
-<template is="footer" data="{{ isEarth }}" />
+<view class="bottom">
+  <template is="spinner" data="{{ isLoading }}" />
+  <template is="footer" data="{{ isEarth }}" />
+</view>

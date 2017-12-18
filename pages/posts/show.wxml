@@ -41,8 +41,10 @@
   </view>
 </view>
 
-<template is="spinner" data="{{ isLoading }}" />
-<template is="footer" data="{{ isEarth }}" />
+<view class="bottom">
+  <template is="spinner" data="{{ isLoading }}" />
+  <template is="footer" data="{{ isEarth }}" />
+</view>
 
 <view class="toolbar">
   <view class="toolbar__overlay" wx:if="{{ !loggedIn }}">
@@ -56,6 +58,7 @@
   <input
     class="toolbar__input"
     confirm-type="send"
+    disabled="{{ !loggedIn }}"
     value="{{ comment.content }}"
     focus="{{ focus }}"
     placeholder="{{ placeholder? placeholder : '添加评论 ...' }}"

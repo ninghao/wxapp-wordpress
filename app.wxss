@@ -4,6 +4,11 @@
 page {
   background: #f8f8f8;
   font-family: "STHeitiTC-Light", "Microsoft YaHei Light", "Hiragino Sans GB", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  padding-bottom: 48px;
+}
+
+.bottom {
+  height: 120px;
 }
 
 .toolbar {
@@ -19,7 +24,7 @@ page {
 .toolbar__input {
   font-size: 14px;
   width: 100%;
-  padding: 16px;
+  margin: 16px;
 }
 
 .toolbar__overlay {

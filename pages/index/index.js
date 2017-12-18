@@ -21,11 +21,14 @@ Page({
       success: (response) => {
         console.log(response)
         const entities = response.data
+        const total = response.header['X-WP-Total'] || response.header['x-wp-total']
+        const totalPages = response.header['X-WP-TotalPages'] || response.header['x-wp-totalpages']
+
         this.setData({
           entities,
           isLoading: false,
-          total: response.header['x-wp-total'],
-          totalPages: response.header['x-wp-totalpages'],
+          total,
+          totalPages,
           currentPage: 1,
           isEarth: false
         })
@@ -38,11 +41,14 @@ Page({
       success: (response) => {
         console.log(response)
         const entities = response.data
+        const total = response.header['X-WP-Total'] || response.header['x-wp-total']
+        const totalPages = response.header['X-WP-TotalPages'] || response.header['x-wp-totalpages']
+
         this.setData({
           entities,
           isLoading: false,
-          total: response.header['x-wp-total'],
-          totalPages: response.header['x-wp-totalpages'],
+          total,
+          totalPages,
           currentPage: 1,
           isEarth: false
         })
@@ -68,12 +74,15 @@ Page({
       success: (response) => {
         console.log(response)
         const entities = [...this.data.entities, ...response.data]
+        const total = response.header['X-WP-Total'] || response.header['x-wp-total']
+        const totalPages = response.header['X-WP-TotalPages'] || response.header['x-wp-totalpages']
+
         this.setData({
           entities,
           currentPage,
           isLoading: false,
-          total: response.header['x-wp-total'],
-          totalPages: response.header['x-wp-totalpages'],
+          total,
+          totalPages,
           isEarth: currentPage >= totalPages
         })
       }

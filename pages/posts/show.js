@@ -85,7 +85,8 @@ Page({
   onBlurComment () {
     this.setData({
       focus: false,
-      placeholder: ''
+      placeholder: '',
+      ['comment.parent']: 0
     })
   },
   onTapComment (event) {
@@ -146,11 +147,14 @@ Page({
         console.log(response)
         const comments = this.transformComments(response.data)
         if (comments.length > 0) {
+          const total = response.header['X-WP-Total'] || response.header['x-wp-total']
+          const totalPages = response.header['X-WP-TotalPages'] || response.header['x-wp-totalpages']
+
           this.setData({
             comments,
             isLoading: false,
-            total: response.header['x-wp-total'],
-            totalPages: response.header['x-wp-totalpages'],
+            total,
+            totalPages,
             currentPage: 1,
             isEarth: false
           })
@@ -180,12 +184,15 @@ Page({
 
         comments = [...this.data.comments, ...comments]
 
+        const total = response.header['X-WP-Total'] || response.header['x-wp-total']
+        const totalPages = response.header['X-WP-TotalPages'] || response.header['x-wp-totalpages']
+
         this.setData({
           comments,
           currentPage,
           isLoading: false,
-          total: response.header['x-wp-total'],
-          totalPages: response.header['x-wp-totalpages'],
+          total,
+          totalPages,
           isEarth: currentPage >= totalPages
         })
       }
