@@ -31,6 +31,15 @@ Page({
     this.getPost(id)
     this.getComments(id)
   },
+  onPullDownRefresh () {
+    const id = this.data.id
+
+    this.getPost(id, () => {
+      this.getComments(id, () => {
+        wx.stopPullDownRefresh()
+      })
+    })
+  },
   transformComments (comments) {
     return comments.map((item) => {
       const content = {
@@ -64,7 +73,9 @@ Page({
       return comment
     })
   },
-  getComments (postId) {
+  getComments (postId, callback = () => {
+
+  }) {
     wx.request({
       url: `${ API_BASE }/${ API_ROUTE_COMMENTS }?post=${ postId }&_embed=true`,
       success: (response) => {
@@ -80,6 +91,8 @@ Page({
             isEarth: false
           })
         }
+
+        callback(response)
       }
     })
   },
@@ -114,7 +127,9 @@ Page({
       }
     })
   },
-  getPost (id) {
+  getPost (id, callback = () => {
+
+  }) {
     wx.request({
       url: `${ API_BASE }/${ API_ROUTE_POSTS }/${ id }?_embed=true`,
       success: (response) => {
@@ -138,6 +153,8 @@ Page({
         wx.setNavigationBarTitle({
           title
         })
+
+        callback(response)
       }
     })
   }
