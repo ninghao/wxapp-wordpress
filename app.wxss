@@ -6,6 +6,22 @@ page {
   font-family: "STHeitiTC-Light", "Microsoft YaHei Light", "Hiragino Sans GB", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+.toolbar {
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.toolbar__input {
+  font-size: 14px;
+  width: 100%;
+  padding: 16px;
+}
+
 .comments {
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
   font-size: 13px;
