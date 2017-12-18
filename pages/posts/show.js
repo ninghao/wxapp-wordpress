@@ -18,7 +18,11 @@ Page({
     featured_media: '',
     author: {},
     isLoading: true,
-    comments: []
+    comments: [],
+    total: 0,
+    totalPages: 0,
+    currentPage: 1,
+    isEarth: false
   },
   onLoad (options) {
     // const id = options.id
@@ -68,9 +72,45 @@ Page({
         const comments = this.transformComments(response.data)
         if (comments.length > 0) {
           this.setData({
-            comments
+            comments,
+            isLoading: false,
+            total: response.header['x-wp-total'],
+            totalPages: response.header['x-wp-totalpages'],
+            currentPage: 1,
+            isEarth: false
           })
         }
+      }
+    })
+  },
+  onReachBottom () {
+    let { currentPage, totalPages, isLoading } = this.data
+
+    if (currentPage >= totalPages || isLoading) {
+      return
+    }
+
+    this.setData({
+      isLoading: true
+    })
+
+    currentPage = currentPage + 1
+
+    wx.request({
+      url: `${ API_BASE }/${ API_ROUTE_COMMENTS }?_embed=true&page=${ currentPage }`,
+      success: (response) => {
+        let comments = this.transformComments(response.data)
+
+        comments = [...this.data.comments, ...comments]
+
+        this.setData({
+          comments,
+          currentPage,
+          isLoading: false,
+          total: response.header['x-wp-total'],
+          totalPages: response.header['x-wp-totalpages'],
+          isEarth: currentPage >= totalPages
+        })
       }
     })
   },

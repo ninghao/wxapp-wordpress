@@ -1,7 +1,6 @@
 <import src="/towxml/entry.wxml" />
 <import src="/templates/spinner.wxml" />
-
-<template is="spinner" data="{{ isLoading }}" />
+<import src="/templates/footer.wxml" />
 
 <view class="featured-media" wx:if="{{ featuredMedia }}" wx:if="{{ false }}">
   <image mode="aspectFill" src="{{ featuredMedia }}" />
@@ -38,3 +37,6 @@
     </view>
   </view>
 </view>
+
+<template is="spinner" data="{{ isLoading }}" />
+<template is="footer" data="{{ isEarth }}" />
