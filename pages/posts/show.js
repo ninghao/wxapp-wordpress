@@ -158,13 +158,18 @@ Page({
           const total = response.header['X-WP-Total'] || response.header['x-wp-total']
           const totalPages = response.header['X-WP-TotalPages'] || response.header['x-wp-totalpages']
 
+          let isEarth = false
+          if (totalPages == 1) {
+            isEarth = true
+          }
+
           this.setData({
             comments,
             isLoading: false,
             total,
             totalPages,
             currentPage: 1,
-            isEarth: false
+            isEarth
           })
         }
 
@@ -186,7 +191,7 @@ Page({
     currentPage = currentPage + 1
 
     wx.request({
-      url: `${ API_BASE }/${ API_ROUTE_COMMENTS }?_embed=true&page=${ currentPage }`,
+      url: `${ API_BASE }/${ API_ROUTE_COMMENTS }?_embed=true&page=${ currentPage }&post=${ this.data.id }`,
       success: (response) => {
         let comments = this.transformComments(response.data)
 
